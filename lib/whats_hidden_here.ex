@@ -1,8 +1,6 @@
 defmodule WhatsHiddenHere do
   @moduledoc """
   Functions in this module, will tell what's hidden behind the string.
-
-  Acceptable: "YW1taWwzKChyaG5tbidbXihOMDBoKXNjOmVsPg=="
   """
 
   @doc """
