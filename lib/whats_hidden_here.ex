@@ -16,8 +16,12 @@ defmodule WhatsHiddenHere do
       "Quynh"
 
   """
-  def less_erlangish_decode(encoded_string, _magic_number) do
+  def less_erlangish_decode(encoded_string, magic_number) do
     encoded_string
+    |> Base.decode64!()
+    |> String.to_charlist()
+    |> Enum.map(&(&1 - magic_number))
+    |> to_string()
   end
 
   @doc """
@@ -33,7 +37,11 @@ defmodule WhatsHiddenHere do
       "Quynh"
 
   """
-  def more_erlangish_decode(encoded_string, _magic_number) do
+  def more_erlangish_decode(encoded_string, magic_number) do
     encoded_string
+    |> Base.decode64!()
+    |> :erlang.binary_to_term()
+    |> Enum.map(&(&1 - magic_number))
+    |> to_string()
   end
 end
